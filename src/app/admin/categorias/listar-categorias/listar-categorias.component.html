@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="mt-4">Lista de Categorias</h2>
+  <p>Veja aqui todas as categorias atualmente cadastradas:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#id</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let categoria of categorias; let i = index;">
+        <td>{{ categoria.id }}</td>
+        <td>{{categoria.nome}}</td>
+        <th>
+          <button class="btn btn-link" [routerLink]="['/admin/categorias/visualizar', categoria.id]">Visualizar</button> /
+          <button class="btn btn-link" routerLink="/admin/categorias/editar">Editar</button> /
+          <button class="btn btn-link" (click)="openModal(template, categoria, i)">Apagar</button>
+        </th>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <button class="btn btn-success" routerLink="/admin/categorias/cadastrar">Cadastrar Nova Categoria</button>
+
+  <ng-template #template>
+
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Apagar Categoria</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      Você tem certeza que deseja apagar essa categoria?
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="modalRef.hide()">Voltar</button>
+      <button class="btn btn-danger" (click)="delete(selectCategoria.id, selectIndex)">Apagar</button>
+    </div>
+
+  </ng-template>
+
+</div>

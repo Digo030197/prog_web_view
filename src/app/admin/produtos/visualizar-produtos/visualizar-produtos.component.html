@@ -1,0 +1,33 @@
+<div class="container">
+    
+      <h2 class="mt-4">Visualizando o Produto</h2>
+    
+      <form>
+        <div class="form-group">
+          <div>
+            <label for="nome">Nome</label>
+            <input class="form-control" id="nome" type="text" value="{{produto.id}}" disabled>
+          </div>
+          <div class="my-4">
+            <label for="descricao">Descrição</label>
+            <input class="form-control" id="descricao" type="text" value="{{produto.descricao}}" disabled>
+          </div>
+          <div class="my-4">
+            <label for="categoria">Categoria</label>
+            <select class="form-control" id="categoria" type="text" value="{{produto.categoria.nome}}" disabled>
+              <option>-</option>
+              <option>RPG</option>
+              <option>Corrida</option>
+              <option>Aventura</option>
+            </select>
+          </div>
+          <div class="my-4">
+            <label for="preco">Preço</label>
+            <input class="form-control" id="preco" type="text" value="{{produto.preco}}" disabled>
+          </div>
+        </div>
+      </form>
+    
+      <button class="btn btn-info" routerLink="/admin/produtos/listar">Voltar</button>
+    
+    </div>

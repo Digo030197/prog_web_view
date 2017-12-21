@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 class="mt-4">Carrinho de Compras</h2>
+  <p>Finalize sua(s) compra(s) aqui:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Quantidade</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos; let i = index;">
+        <th class="d-inline-flex">
+          <button class="btn btn-success">+</button>
+          <label for="quantidade"></label>
+          <input class="form-control" id="quantidade" type="text">
+          <button class="btn btn-warning">-</button>
+        </th>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>{{ produto.categoria.nome }}</td>
+        <td>{{ produto.preco }}</td>
+        <th>
+          <button class="btn btn-danger">X</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Valor Total: {{ valorTotal }}</p>

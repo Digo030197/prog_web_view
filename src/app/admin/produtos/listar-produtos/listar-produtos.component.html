@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="mt-4">Lista de Produtos</h2>
+  <p>Veja aqui todos os produtos atualmente cadastrados:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#id</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos; let i = index;">
+        <th>{{ produto.id }}</th>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>{{ produto.categoria.nome }}</td>
+        <td>{{ produto.preco }}</td>
+        <th>
+          <button class="btn btn-link" [routerLink]="['/admin/produtos/visualizar', produto.id]">Visualizar</button> /
+          <button class="btn btn-link" routerLink="/admin/produtos/editar">Editar</button> /
+          <button class="btn btn-link" (click)="openModal(template)">Apagar</button>
+          <button class="btn btn-link" (click)="adicionarProduto(produto)">Carrinho</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" routerLink="/admin/produtos/cadastrar">Cadastrar Novo Produto</button>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Apagar Produto</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Você tem certeza que deseja apagar esse Produto?
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="modalRef.hide()">Voltar</button>
+      <button class="btn btn-danger" (click)="delete(produto.id, i)">Apagar</button>
+    </div>
+  </ng-template>
+</div>
